@@ -4,3 +4,4 @@
 # Reading the implementation part of the package.
 #
 ReadPackage( "CrystFundDom", "gap/CrystFundDom.gi");
+ReadPackage( "CrystFundDom", "gap/HyperplaneConversion.gi");

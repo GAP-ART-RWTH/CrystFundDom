@@ -77,14 +77,29 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.13",
-  NeededOtherPackages := [ ["cryst", "4.1.29"], ["polymaking", "0.8.7"] ],
-  SuggestedOtherPackages := [ ["crystcat", "1.1.10"] ],
+  NeededOtherPackages := [ ["cryst", "4.1.29"] ],
+  # SuggestedOtherPackages := [ ["crystcat", "1.1.10"], ["polymaking", "0.8.7"] ],
   ExternalConditions := [ ],
 ),
 
 AvailabilityTest := ReturnTrue,
 
 TestFile := "tst/testall.g",
+
+# Extensions := [
+#   rec(
+#     needed := [ ["OscarInterface", ">= 1.0.0"] ],
+#     filename := "gap/HyperplaneConversion.gi",
+#   ),
+#   rec(
+#     needed := [ ["polymaking", "0.8"] ],
+#     filename := "gap/HyperplaneConversion.gi",
+#   ),
+#   # rec(
+#   #   needed := [ ],
+#   #   filename := "gap/nothing.gi",
+#   # ),
+# ],
 
 #Keywords := [ "TODO" ],
 
