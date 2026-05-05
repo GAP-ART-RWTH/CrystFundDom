@@ -78,7 +78,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.13",
   NeededOtherPackages := [ ["cryst", "4.1.29"] ],
-  # SuggestedOtherPackages := [ ["crystcat", "1.1.10"], ["polymaking", "0.8.7"] ],
+  SuggestedOtherPackages := [ ["crystcat", "1.1.10"], ["polymaking", "0.8.7"] ],
   ExternalConditions := [ ],
 ),
 
