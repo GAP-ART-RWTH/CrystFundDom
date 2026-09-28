@@ -86,20 +86,16 @@ AvailabilityTest := ReturnTrue,
 
 TestFile := "tst/testall.g",
 
-# Extensions := [
-#   rec(
-#     needed := [ ["OscarInterface", ">= 1.0.0"] ],
-#     filename := "gap/HyperplaneConversion.gi",
-#   ),
-#   rec(
-#     needed := [ ["polymaking", "0.8"] ],
-#     filename := "gap/HyperplaneConversion.gi",
-#   ),
-#   # rec(
-#   #   needed := [ ],
-#   #   filename := "gap/nothing.gi",
-#   # ),
-# ],
+Extensions := [
+  rec(
+    needed := [ ["polymaking", "0.8"] ],
+    filename := "gap/HyperplanePolymaking.gi",
+  ),
+  rec(
+    needed := [ ["OscarInterface", ">= 1.0.0"] ],
+    filename := "gap/HyperplaneOscar.gi",
+  ),
+],
 
 #Keywords := [ "TODO" ],
 

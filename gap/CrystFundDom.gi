@@ -18,6 +18,11 @@ BindGlobal("__cryst__EuclideanNorm",
 );
 
 
+__cryst__Hyperplaneconversion:=function(elementsInOrbit, vector)
+    ErrorNoReturn("there is neither the package 'polymaking' nor installed, nor are you running GAP inside OSCAR. \nPlease chose one of these options start the package loading process again.");
+end;
+
+
 InstallGlobalFunction( DirichletCellForFiniteWord,
     function( vector, length, generatingSet)
         local i, j, k, elementsOfLenghtL, gen, elementsInOrbit, e, hyperplanes, y, h, l, el, fundDomSurface, vif, coords, polymakeObj, vifTriangulated, facett, nextEdge, edges, facet, orderedFacets, newFacet, currVertex, possVertex, remainingVertices, oldElems, triangulatedFacets, pr;
@@ -63,30 +68,9 @@ InstallGlobalFunction( DirichletCellForFiniteWord,
             Add(elementsInOrbit, (vector*e));
         od;
 
-        # calculate the hyperplanes necessary for the dirichlet construction
-        # we cut of the last coordinate as it is always 0 because of the trailing 1 from the isometry operations
-        # using the formulas presented here: https://math.stackexchange.com/questions/2858815/understanding-formula-for-hyperplanes
-        hyperplanes:=[];
-        for y in elementsInOrbit do
-            h:=[];
-            h[1]:=1/2*(__cryst__EuclideanNorm((y))^2 - __cryst__EuclideanNorm((vector))^2);
-            for i in [1..Length(vector)-1] do
-                h[i+1]:=Rat(y[i]-vector[i]);
-            od;
-            Add(hyperplanes, h);
-        od;
-
-        # remove zeroes, as they are not allowed
-        while not Position(hyperplanes, [0,0,0,0]) = fail do
-            Remove(hyperplanes, Position(hyperplanes, [0,0,0,0]));
-        od;
-
-        # get the vertex coordinates with polymake
-        polymakeObj:=CreatePolymakeObject();;
-        AppendInequalitiesToPolymakeObject(polymakeObj, hyperplanes);;
-        coords:=Polymake(polymakeObj, "VERTICES");;
-        # get vertices in faces as well
-        vif:=Polymake(polymakeObj, "VERTICES_IN_FACETS");;
+        hyperplanes:=__cryst__Hyperplaneconversion(elementsInOrbit, vector);
+        vif:=hyperplanes[1];
+        coords:=hyperplanes[2];
 
         # vertices in faces are not necessary triangulated
         vifTriangulated:=[];
