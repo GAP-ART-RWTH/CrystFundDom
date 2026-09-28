@@ -23,7 +23,7 @@
 #! @Description
 
 #! Computes the Dirichlet cell computed as the intersection over the orbit of <K>vector</K> with elements being words of length at most <K>length</K> in <K>generatingSet</K>.
-#! A required package for the computation is <K>Polymaking</K>. 
+#! A requirement for the computation is <K>Polymaking</K> or the use of GAP inside OSCAR (https://www.oscar-system.org/). If none are available then an error is thrown, if both are available oscar is preferred. 
 #! The result is a list <K>[triangulatedFacets, coords]</K> where <K>triangulatedFacets</K> is a list of the faces of the resulting polyhedron and <K>coords</K> contains the coordinates of the vertices. 
 
 #! @Returns a polygonal complex
